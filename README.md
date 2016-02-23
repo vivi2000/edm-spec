@@ -133,7 +133,7 @@ width height 属性中不要设置 `px` ，会在 outlook 失效
 2. outlook不兼容背景图片，仅支持纯色
 3. css必须在行间，在头部不支持
 4. outlook有默认的line-height，自己设置line-height无效（在切图的时候要注意多预留空隙）
-5. outlook不支持热区(map area)，密集的链接图片需切成小块用表格加<a><img/></a>的方式拼接
+5. outlook不支持热区(map area)，密集的链接图片需切成小块用表格加`<a><img/></a>`的方式拼接
 
 
 ## Outlook建议写法
