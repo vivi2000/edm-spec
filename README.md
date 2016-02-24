@@ -13,7 +13,7 @@
 <div style="height: 69px;"></div>
 ```
 
-如不考虑outlook客服端。可以把CSS写在 `<style>` 标签内
+如不考虑Outlook客服端。可以把CSS写在 `<style>` 标签内
 ```css
 <style>
   .box{ height: 69px;}
@@ -72,7 +72,7 @@
 ```html
 <td width="200"></td>
 ```
-width height 属性中不要设置 `px` ，会在 outlook 失效
+width height 属性中不要设置 `px` ，会在 Outlook 失效
 ```html
 <td width="200px"></td>    错误
 ```
@@ -130,11 +130,19 @@ width height 属性中不要设置 `px` ，会在 outlook 失效
 
 ## Outlook注意点
 1. padding需要写在<td>上，写在其它地方无效。
-2. outlook不兼容背景图片，仅支持纯色
+2. Outlook不兼容背景图片，仅支持纯色
 3. css必须在行间，在头部不支持
-4. outlook有默认的line-height，自己设置line-height无效（在切图的时候要注意多预留空隙）
-5. outlook不支持热区(map area)，密集的链接图片需切成小块用表格加`<a><img/></a>`的方式拼接
+4. Outlook有默认的line-height，自己设置line-height无效（在切图的时候要注意多预留空隙）
+5. Outlook不支持热区(map area)，密集的链接图片需切成小块用表格加`<a><img/></a>`的方式拼接
+6. Outlook 2007-2013不支持image的margin与padding样式，必要的时候尝试`hspace`和`vspace`
+7. Outlook下文本不自动换行，需要加上`<td style="word-break:break-all;">`
+8. Outlook对`margin`和`padding`的支持非常差
 
+建议：
+
+	在`table`上用`cellpadding`和`cellspacing`做间距
+
+	块级元素最好把padding加到包裹它的`td`上
 
 ## Outlook建议写法
 1. 建议
@@ -142,7 +150,7 @@ width height 属性中不要设置 `px` ，会在 outlook 失效
     不提倡用：`<td background="#f4f4f4">`
     建议用法：`<td  style="background-color:#f0f0f0;">`
   - 给文字模块的<table>加属性`cursor: default;`
-  - 由于outlook自带line-height,会造成文字高度溢出。
+  - 由于Outlook自带line-height,会造成文字高度溢出。
     对大段文字用div了拆分每一行，用div的height来控制行高，不依赖自动换行，更加精确。
     例子（经典的三格布局）：
 ``` css
@@ -169,4 +177,11 @@ width height 属性中不要设置 `px` ，会在 outlook 失效
 			</table>
 		</td>
 	</tr>
+```
+	用MSO控制行高
+	使用行高前添加`mso-line-height-rule:exactly`
+``` css
+<td style="mso-line-height-rule:exactly; line-height:50px;">
+	//行高为50px的文字
+</td>
 ```
